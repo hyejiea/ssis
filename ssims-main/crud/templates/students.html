@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <div class="mb-3">
+    <form class="d-flex" method="POST" action="{{ url_for('search') }}">
+      {{ form.search_by(class="form-select form-select-md me-3") }} 
+      {{ form.this(class="form-control form-control-md me-3", placeholder="...") }}
+      <button class="btn btn-info" type="submit">Search</button>
+    </form>
+  </div>
+  {% for student in students %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="mb-3">
+          <form class="d-flex" method="POST" action="{{ url_for('add_a_student') }}">
+            <button class="btn btn-info" type="submit">Add a Student</button>
+          </form>
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ student[0] }}</a>
+          <small class="text-muted">{{ student[5] }}</small>
+          <div class="mb-1">
+            <a class="btn-secondary btn-sm" href="{{ url_for('update', id_number=student[0]) }}">Update</a>
+            <a class="btn-danger btn-sm" href="{{ url_for('delete', id_number=student[0]) }}">Delete</a>
+          </div>
+        </div>
+        <h2>
+          <a class="article-title" href="#">{{ student[1] + " " + student[2] }}</a>
+        </h2>
+        <p class="article-content">{{ student[3] + " " + student[4] }}</p>
+      </div>
+    </div>
+    </article>
+
+  {% endfor %}
+{% endblock content %}

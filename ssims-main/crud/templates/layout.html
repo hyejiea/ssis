@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <title>{{ title }}</title>
+</head>
+<body>
+  <body style="background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ8NDQ0NFREWFhURFRUYHSggGCYlJxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKysrKzc3KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAKgBLAMBIgACEQEDEQH/xAAWAAEBAQAAAAAAAAAAAAAAAAAAAQf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFwEBAAMAAAAAAAAAAAAAAAAAAAECBf/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ANPAaKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAogCiAKIAogCiKAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAKigAAAAAAAAAAAAAAAAAAAAAAAAIoCAAAAqACoAKgAogAqACoAKgCiAKIAqACoACooCKgKCAoAAACKAgAKCAoAAAAACKgAAAACoAAAAAAAAAKigIqAKICgAAACKCAACgIKAgoCCgIKgAAAAAAAAAAAAAACooIKgAoAAAAAAAigIoAgoCCgIKAgoCAoICggKCAoICggKCAACgIKgAoAioCgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIoAigAAIKgKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAigAACKgKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAigCKAAAIqAoAACAASAAAAAAAAAgCiAKAAIAogCiAKAAIAqACoAKIAqAD/2Q==);">
+  {% include "navigation_bar.html" %}
+  <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert-{{ category }} p-1 mb-3">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-4">
+          <div class="content-section">
+            <h3>Heyyy!</h3>
+            <p class='text-muted'> Simple Student Management System.
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light"><a href="#">CRUDL Functionalities</a></li>
+                <li class="list-group-item list-group-item-light"><a href="#"> Student</a></li>
+                <li class="list-group-item list-group-item-light"><a href="#"> College</a></li>
+                <li class="list-group-item list-group-item-light"><a href="#"> Courses</a></li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      
+      </div>
+      
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+</body>
+</html>

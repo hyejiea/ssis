@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="mb-3">
+        <form class="d-flex" method="POST" action="{{ url_for('add_a_college') }}">
+        <button class="btn btn-outline-warning btn-block" type="submit">Add a College</button>
+        </form>
+    </div>
+  <div class="mb-3">
+    <form class="d-flex" method="POST" action="{{ url_for('college_search') }}">
+      {{ form.search_by(class="form-select form-select-md me-3") }} 
+      {{ form.this(class="form-control form-control-md me-3", placeholder="...") }}
+      <button class="btn btn-outline-info" type="submit">Search</button>
+    </form>
+  </div>
+  {% for college in colleges %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ college[0] }}</a>
+          <small class="text-muted">{{ college[1] }}</small>
+          <div class="mb-1">
+            <a class="btn-secondary btn-sm" href="{{ url_for('update_a_college', college_code=college[0]) }}">Update</a>
+            <a class="btn-danger btn-sm" href="{{ url_for('delete_a_college', college_code=college[0]) }}">Delete</a>
+          </div>
+        </div>
+        <h2>
+          <a class="article-title" href="#">{{ college[1] }}</a>
+        </h2>
+        <p class="article-content"></p>
+      </div>
+    </article>
+  {% endfor %} 
+{% endblock content %}
